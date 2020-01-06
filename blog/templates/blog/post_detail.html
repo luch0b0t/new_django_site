@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Blog</title>
+    <title>Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
@@ -17,15 +17,12 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1><a href="">LUCHO BLOG</a></h1>
-    {% for post in posts %}
+    {% if post.published_date %}
         <div>
-            <p>Published Date: {{ post.published_date }}</p>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text | linebreaksbr}}</p>
+            {{ post.published_date }}
         </div>
-    {% endfor %}
-
-
+    {% endif %}
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.text | linebreaksbr }}</p>
 </body>
 </html>
