@@ -1,4 +1,6 @@
 {% extends 'blog/base.html' %}
+{% load markdownify %}
+
 {% block title %}Homepage{% endblock %}
 {% block content %}
 
@@ -8,7 +10,7 @@
                 <p>Published Date: {{ post.published_date }}</p>
             </div>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text | linebreaksbr }}</p>
+            <p>{{ post.text | linebreaksbr | markdown | safe | truncatechars:50 }}</p>
 
             <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
         </div>
